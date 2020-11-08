@@ -8,7 +8,7 @@
 <ul>
   <li>Há uma tabela de letras do alfabeto, onde o usuário poderá clicar nas letras e as mesmas irão aparecer no centro da tela, formando assim sílabas ou palavras;</li>
   <li>Um botão "Backspace" foi adicionado para que o usuário possa apagar a letra que errou ao tentar formar uma sílaba ou frase (Em manutenção);</li>
-  <li>Na parte de baixo da plataforma, haverá um filtro. Onde nele, de acordo com a palavra que o usuário vai digitando, aparecerá palavras que começam com as letras em que o mesmo digitou;</li>
+  <li>Na parte de baixo da plataforma, haverá um filtro. Onde nele, de acordo com a palavra que o usuário vai digitando, aparecerá palavras que começam com as letras em que o mesmo digitou (Não iniciado);</li>
   
 </ul>
 <h2>Tecnologias usadas</h2>
