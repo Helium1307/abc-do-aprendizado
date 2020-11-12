@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { FaBackspace } from 'react-icons/fa';
 
+import api from '../services/api';
 import Words from '../components/Word/Words';
 import Suggestion from '../components/Suggestion/Suggestion'
 import '../styles/alphabet.css';
@@ -20,36 +21,28 @@ function Alphabet(){
   const [rightLetter, setRightLetter] = useState<any>([]);
   const [suggestion, setSuggestion] = useState<any>([]);
   
-  function handlePutLetter(){
-    
-    
-  }
+  api.get('/search')
+  .then((response)=> console.log(response.data))
+  .catch(error =>{console.log("opa, teve erro")})
 
   function backspace(){
     
 
     const length = rightLetter.length;
-    const deletedLetter = rightLetter[length-1];
+    let deletedLetter = rightLetter[length-1];
+    
     
      //setRightLetter(rightLetter.filter((item : any)=>(item !== (item.id === deletedLetter))));
      //ATÉ AGORA OQUE DEU CERTO
-     console.log(word.id)
-      setRightLetter(rightLetter.filter((item : any)=>(
+     setRightLetter(rightLetter.filter((item : any)=>(
      
-        rightLetter.indexOf(item) !== rightLetter.indexOf(deletedLetter)
-        )
-      ));
-
-      
+      (rightLetter.indexOf(item)) !== (rightLetter.length-1 )
+    
+    )
+  ));
   }
 
   // UTILIZANDO O POP() NO setRightLetter ,  ELE SIMPLESMENTE PEGA O VALOR DO POP E TRANSFORMA NO VALOR DO STATE.
-  
-  useEffect(()=>{
-    
-  },[rightLetter])
-
-
   return(
     <>
       <header>
@@ -58,8 +51,8 @@ function Alphabet(){
         </div>
         
         <div className="letters-table">
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="A";word.id++; console.log(word.id); setRightLetter([...rightLetter,word.value]);}}>A</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="B";word.id++; console.log(word.id); setRightLetter([...rightLetter,word.value]);}}>B</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="A"; ; setRightLetter([...rightLetter,word.value]);}}>A</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="B" ; setRightLetter([...rightLetter,word.value]);}}>B</span>
           <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="C" ; setRightLetter([...rightLetter,word.value]);}}>C</span>
           <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="D" ; setRightLetter([...rightLetter,word.value]);}}>D</span>
           <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="E" ; setRightLetter([...rightLetter,word.value]);}}>E</span>
