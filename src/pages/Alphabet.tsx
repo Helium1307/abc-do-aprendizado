@@ -7,6 +7,7 @@ import Words from '../components/Word/Words';
 import Suggestion from '../components/Suggestion/Suggestion'
 import '../styles/alphabet.css';
 import { idText } from 'typescript';
+import { spawn } from 'child_process';
 
 
 
@@ -18,28 +19,26 @@ function Alphabet(){
     id: 1,
   };
 
-  const [rightLetter, setRightLetter] = useState<any>([]);
+  const [rightLetter, setRightLetter] = useState<any>([{
+    
+      value:"",
+      id:0,
+  }]);
   const [suggestion, setSuggestion] = useState<any>([]);
   
-  api.get('/search')
-  .then((response)=> console.log(response.data))
-  .catch(error =>{console.log("opa, teve erro")})
+  const [counter, setCounter] = useState<number>(0)
 
   function backspace(){
-    
-
-    const length = rightLetter.length;
-    let deletedLetter = rightLetter[length-1];
-    
+         
     
      //setRightLetter(rightLetter.filter((item : any)=>(item !== (item.id === deletedLetter))));
      //ATÉ AGORA OQUE DEU CERTO
-     setRightLetter(rightLetter.filter((item : any)=>(
+     setRightLetter(rightLetter.filter((item : any, index : number)=>(
      
-      (rightLetter.indexOf(item)) !== (rightLetter.length-1 )
+      (rightLetter.indexOf(item)) !== (rightLetter.length-1 ) 
     
     )
-  ));
+  ))
   }
 
   // UTILIZANDO O POP() NO setRightLetter ,  ELE SIMPLESMENTE PEGA O VALOR DO POP E TRANSFORMA NO VALOR DO STATE.
@@ -51,30 +50,32 @@ function Alphabet(){
         </div>
         
         <div className="letters-table">
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="A"; ; setRightLetter([...rightLetter,word.value]);}}>A</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="B" ; setRightLetter([...rightLetter,word.value]);}}>B</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="C" ; setRightLetter([...rightLetter,word.value]);}}>C</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="D" ; setRightLetter([...rightLetter,word.value]);}}>D</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="E" ; setRightLetter([...rightLetter,word.value]);}}>E</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="F" ; setRightLetter([...rightLetter,word.value]);}}>F</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="G" ; setRightLetter([...rightLetter,word.value]);}}>G</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="H" ; setRightLetter([...rightLetter,word.value]);}}>H</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="I" ; setRightLetter([...rightLetter,word.value]);}}>I</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="J" ; setRightLetter([...rightLetter,word.value]);}}>J</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="K" ; setRightLetter([...rightLetter,word.value]);}}>K</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="L" ; setRightLetter([...rightLetter,word.value]);}}>L</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="M" ; setRightLetter([...rightLetter,word.value]);}}>M</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="N" ; setRightLetter([...rightLetter,word.value]);}}>N</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="O" ; setRightLetter([...rightLetter,word.value]);}}>O</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="P" ; setRightLetter([...rightLetter,word.value]);}}>P</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="Q" ; setRightLetter([...rightLetter,word.value]);}}>Q</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="R" ; setRightLetter([...rightLetter,word.value]);}}>R</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="S" ; setRightLetter([...rightLetter,word.value]);}}>S</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="T" ; setRightLetter([...rightLetter,word.value]);}}>T</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="U" ; setRightLetter([...rightLetter,word.value]);}}>U</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="V" ; setRightLetter([...rightLetter,word.value]);}}>V</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="X" ; setRightLetter([...rightLetter,word.value]);}}>X</span>
-          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{ word.value ="Z" ; setRightLetter([...rightLetter,word.value]);}}>Z</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"A",id:counter}]);}}>A</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"B",id:counter}]);}}>B</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"C",id:counter}]);}}>C</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"D",id:counter}]);}}>D</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"E",id:counter}]);}}>E</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"F",id:counter}]);}}>F</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"G",id:counter}]);}}>G</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"H",id:counter}]);}}>H</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"I",id:counter}]);}}>I</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"J",id:counter}]);}}>J</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"K",id:counter}]);}}>K</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"L",id:counter}]);}}>L</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"M",id:counter}]);}}>M</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"N",id:counter}]);}}>N</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"O",id:counter}]);}}>O</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"P",id:counter}]);}}>P</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"Q",id:counter}]);}}>Q</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"R",id:counter}]);}}>R</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"S",id:counter}]);}}>S</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"T",id:counter}]);}}>T</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"U",id:counter}]);}}>U</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"V",id:counter}]);}}>V</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"W",id:counter}]);}}>W</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"X",id:counter}]);}}>X</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"Y",id:counter}]);}}>Y</span>
+          <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"Z",id:counter}]);}}>Z</span>
 
         </div>
 
@@ -82,7 +83,13 @@ function Alphabet(){
       </header>  
       
       <main className="words">
-        <Words value={ rightLetter }/>
+        <Words>
+          { rightLetter.map((letra : any) => {
+            return(
+              <span key={letra.id}>{letra.value}</span>
+            )
+          }) }
+        </Words>
       </main>
       
       <footer>

@@ -3,13 +3,12 @@
    font-weight: 800;
    color: #fff;
    
-   
 
    width: 120rem;
    height: 18rem;
 
    display:flex;
-   flex-flow:column wrap;
+   justify-content: center;
    align-items: center;
 
   

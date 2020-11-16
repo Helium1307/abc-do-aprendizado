@@ -5,7 +5,7 @@ import './word.css';
 function Word(props:any){
   return (
 
-    <span id="show-word">{props.value}</span>
+    <div id="show-word">{props.children}</div>
 
   );
 }
