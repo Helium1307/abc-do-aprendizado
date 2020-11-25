@@ -117,3 +117,22 @@ footer header span{
   border: 2px solid #fff;
 
 }
+
+.btn-darkMode{
+  margin-top:-70px;
+  padding: 1px 20px 3px 20px;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  font-size: 39px;
+  font-weight: 800;
+
+  background: rgba(26, 25, 25, 0.945);
+  border-radius: 10px;
+
+  border: 2px solid #fff;
+
+}

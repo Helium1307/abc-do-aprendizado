@@ -1,38 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
 import { FaBackspace } from 'react-icons/fa';
+import { VscColorMode }from 'react-icons/vsc';
 
 import api from '../services/api';
 import Words from '../components/Word/Words';
 import Suggestion from '../components/Suggestion/Suggestion'
 import '../styles/alphabet.css';
-import { idText } from 'typescript';
-import { spawn } from 'child_process';
 
 
 
 
 function Alphabet(){
   
-  let word = {
-    value: '',
-    id: 1,
-  };
-
+  
   const [rightLetter, setRightLetter] = useState<any>([{
     
       value:"",
-      id:0,
+      id:-1,
   }]);
-  const [suggestion, setSuggestion] = useState<any>([]);
   
+  const [suggestion, setSuggestion] = useState<any>([]);
   const [counter, setCounter] = useState<number>(0)
 
   function backspace(){
          
-    
-     //setRightLetter(rightLetter.filter((item : any)=>(item !== (item.id === deletedLetter))));
-     //ATÉ AGORA OQUE DEU CERTO
      setRightLetter(rightLetter.filter((item : any, index : number)=>(
      
       (rightLetter.indexOf(item)) !== (rightLetter.length-1 ) 
@@ -41,13 +33,30 @@ function Alphabet(){
   ))
   }
 
-  // UTILIZANDO O POP() NO setRightLetter ,  ELE SIMPLESMENTE PEGA O VALOR DO POP E TRANSFORMA NO VALOR DO STATE.
+  useEffect(()=>{
+    let search = rightLetter.map((letra : any) =>{
+      return letra.value;
+  })
+
+
+    api.get(`people/?search=${search}`)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((err) => {
+      console.error("ops! ocorreu um erro" + err);
+   });
+
+  },[rightLetter])
+
   return(
     <>
       <header>
         <div className="name-container">
           <span>Aprendiz: {String(localStorage.getItem('userName'))}</span>
         </div>
+
+        
         
         <div className="letters-table">
           <span className="letters" onClick={ (event: React.MouseEvent<HTMLElement>) =>{setCounter(counter+1); setRightLetter([...rightLetter,{value:"A",id:counter}]);}}>A</span>
@@ -80,6 +89,8 @@ function Alphabet(){
         </div>
 
         <button className="btn-backspace" onClick={(event: React.MouseEvent<HTMLElement>) =>{backspace()} } ><FaBackspace /></button>
+        <button className="btn-darkMode"><VscColorMode/></button>
+      
       </header>  
       
       <main className="words">
@@ -96,7 +107,7 @@ function Alphabet(){
         <header><span>Sugestões:</span></header>
 
         <div className="content">
-          <Suggestion suggestion={'dale dale dale'} />
+          <Suggestion suggestion={suggestion} />
         </div>
       </footer>
 
