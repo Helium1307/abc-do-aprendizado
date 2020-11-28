@@ -3,16 +3,24 @@
    font-weight: 800;
    color: #fff;
    
-
+ 
    width: 120rem;
    height: 18rem;
-
+ 
    display:flex;
    justify-content: center;
    align-items: center;
-
+ 
   
    
-}
-
-
+ }
+ 
+ @media (max-width: 1024px){
+ 
+   #show-word{
+     font-size:100px;
+   }
+ }
+ 
+ 
+ 

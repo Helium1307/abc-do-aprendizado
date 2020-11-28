@@ -1,19 +1,55 @@
 body{
-  background: linear-gradient(106.9deg, #F08D8D 3.43%, rgba(255, 255, 255, 0) 98.71%), #F28A50;
-
+  
   width: 100vw;
   height: 100vh;
-
-  max-height: 100vh;
   
+  
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: linear-gradient(106.9deg, #F08D8D 3.43%, rgba(255, 255, 255, 0) 98.71%), #F28A50;
+  
+  background-attachment: fixed;
 }
 
 header{
   display:flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  
+  flex-direction: column;
+  align-items: flex-end;
 
-  width:110rem;
+  width:100vw;
+}
+
+.alinhamento{
+  display:flex;
+  justify-content: space-around;
+
+  width: 100vw;
+}
+
+.btn-backspace{
+  margin-top: 10px;
+  
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 80px;
+  height: 60px;
+
+  margin-right:10px;
+
+  color: #fff;
+  font-size: 39px;
+  font-weight: 800;
+
+  background: linear-gradient(270deg, #F073F2 0%, rgba(20, 0, 255, 0.44) 98.6%), #FFFFFF;
+  border-radius: 10px;
+
+  border: 2px solid #fff;
+
 }
 
 .letters-table{
@@ -75,26 +111,34 @@ cursor:pointer;
 
 main{
 
-  height: 597px;
+  width:100vw;
 
   display:flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 footer{
 
-  height: 176px;
+  display:flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  width:100vw;
+  height:20vh;
 
   background: linear-gradient(176.27deg, #00DF9C 1.76%, rgba(4, 183, 172, 0.62) 100%), #9CF8E7;
 
 
 }
 
-footer header span{
+footer header  {
   font-size: 34px;
   font-weight: 800;
   color:#fff;
+
+  display:flex;
+  align-items: flex-start;
 
   padding-left: 20px;
   padding-top: 10px;
@@ -102,37 +146,189 @@ footer header span{
   margin-bottom:30px;
 }
 
-.btn-backspace{
-  margin-left: 104rem;
-  margin-top: 10px;
-  padding: 10px 20px 3px 20px;
 
-  color: #fff;
-  font-size: 39px;
-  font-weight: 800;
 
-  background: linear-gradient(270deg, #F073F2 0%, rgba(20, 0, 255, 0.44) 98.6%), #FFFFFF;
-  border-radius: 10px;
 
-  border: 2px solid #fff;
 
+/*=====================PARTE DA RESPONSIVIDADE======================*/
+
+
+@media screen and (max-width: 1461px){
+  .name-container{
+    display:none;
+  }
+
+  header  {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .letters-table{
+    font-size:32px;
+    
+    width: 86vw;
+    max-height:9vh;
+    height: 60px;
+  }
+
+  .btn-backspace{
+    font-size:30px;
+    width:6vw;
+  }
+
+  footer {
+    height:152px;
+    max-height:19vh;
+
+    display:flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  footer header{
+    font-size:30px;
+    
+    justify-content: flex-start;
+  }
 }
 
-.btn-darkMode{
-  margin-top:-70px;
-  padding: 1px 20px 3px 20px;
+@media screen and  (max-width: 1042px){
+  
 
-  display:flex;
-  justify-content: center;
-  align-items: center;
+  body{
+    
 
-  color: #fff;
-  font-size: 39px;
-  font-weight: 800;
+    flex-direction: column;
+    
+    justify-content: space-between;
 
-  background: rgba(26, 25, 25, 0.945);
-  border-radius: 10px;
 
-  border: 2px solid #fff;
+  }
+  
+  header {
+    
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-end;
+  }
+  
+  .btn-backspace{
+    font-size: 30px;
+    width:80px;
 
+  }
+
+  
+  
+
+  .letters-table{
+    font-size:40px;
+
+    width: 90vw;
+    height:100vh
+  }
+
+  
+  footer{
+    height:20%;
+  }
+
+  footer header {
+    font-size:30px;
+    
+    display: flex;
+    align-items: flex-start;
+    
+  }
+
+ 
+}
+
+@media screen and  (max-width: 900px ){
+  body{
+    width:100vw;
+    height: 100vh;
+
+    flex-direction: column;
+    
+    justify-content: space-between;
+
+    
+
+  }
+  
+  header {
+    flex-wrap: wrap;
+    height: auto;
+
+  }
+
+  .btn-backspace{
+
+    font-size:35px;
+
+    padding: 10px 5px;
+    
+  }
+
+  footer{
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .letters-table{
+    font-size:40px;
+
+    width: 100vw;
+  }
+
+  
+}
+
+/*=============PARTE DE AJUSTES PARA TELAS MUITO PEQUENAS====================*/
+@media screen and  (max-width: 735px){
+  
+  
+  .letters-table{
+    font-size: 30px;
+
+    height: auto;
+  }
+
+  .btn-backspace{
+    width: 65px;
+    
+  }
+}
+
+@media screen and (max-width: 541px){
+  .letters-table{
+    font-size: 20px;
+  }
+
+  .btn-backspace{
+    width:55px;
+  }
+
+  footer header span{
+    font-size:20px;
+  }
+}
+
+@media screen and (max-width:365px){
+  .letters-table{
+    font-size: 15px;
+  }
+
+  .btn-backspace{
+    font-size:26px;
+    
+    height: 50px;
+    width: 50px;
+  }
+
+  
+  
 }
