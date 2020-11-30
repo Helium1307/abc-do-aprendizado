@@ -1,8 +1,12 @@
 #show-suggestion{
   border: 1px solid white;
 
-  margin-left: 20rem;
+  margin-left: 1rem;
   
+  height: 11vh;
+
+  display:flex;
+
   color: #fff;
   font-size: 30px;
   font-weight: 800;

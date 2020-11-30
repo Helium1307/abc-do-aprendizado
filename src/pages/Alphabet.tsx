@@ -34,14 +34,31 @@ function Alphabet(){
   }
 
   useEffect(()=>{
-    let search = rightLetter.map((letra : any) =>{
+    let wordMapped = rightLetter.map((letra : any) =>{
       return letra.value;
   })
+
+    let nomeABuscar = [];
+
+    nomeABuscar.push(wordMapped);
+
+    let search = nomeABuscar.toString().replace(/,/g,"");
 
 
     api.get(`people/?search=${search}`)
     .then((response) => {
-      console.log(response.data);
+      let filtragem = response.data.results.filter((value:any)=>{
+        
+        return value.name.toLowerCase() !== search.toLowerCase();
+      });
+
+      setSuggestion([filtragem.map((names:any)=>{
+        return ` , ${names.name}`;
+      })])
+
+      setSuggestion(suggestion.replace(/,/,""))
+
+
     })
     .catch((err) => {
       console.error("ops! ocorreu um erro" + err);
@@ -55,7 +72,7 @@ function Alphabet(){
         <div className="alinhamento">
         
           <div className="name-container">
-            <span>Aprendiz: {String(localStorage.getItem('userName'))}</span>
+            <span>Aprendiz: {String(localStorage.getItem('userName')).replace(/"/g,"")}</span>
           </div>
 
           

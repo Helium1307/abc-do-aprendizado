@@ -1,6 +1,5 @@
 
 #main-container{
-  position: relative;
 
   background:linear-gradient(104.79deg, #21B99E 27.73%, rgba(255, 255, 255, 0) 90.15%), rgba(62, 168, 168, 0.96); ;
 
@@ -8,7 +7,7 @@
   width:100vw;
 
   padding-left:8rem;
-  padding-top: 30px;
+  padding-top: 10px;
 
   display: flex;
   flex-direction: column;
@@ -111,7 +110,279 @@
 
 #main-container .kids{
   margin-left:128px;
-  width: 57rem;
-  height: 57rem;
+  width: 63rem;
+  height: 63rem;
 }
 
+/*============PARTE DE RESPONSIVIDADE===============*/
+
+
+
+@media screen and (max-width:1729px){
+  #main-container .kids{
+    width:30rem;
+    height: 30rem;
+
+    margin-left: 108px;
+  }
+}
+
+@media screen and (max-width:1603px){
+  #main-container .kids{
+    width:25rem;
+    height:25rem;
+
+    margin-left:85px;
+  }
+}
+
+@media screen and (max-width:1500px){
+  #main-container .kids{
+    display:none;
+  }
+
+  .h1-container{
+    margin-left:7rem;
+  }
+
+  .p-container{
+    margin-left:7rem;
+    margin-top:0;
+  }
+}
+
+@media screen and (max-width:1145px){
+  #main-container{
+    
+    justify-content: space-evenly;
+    padding:0
+
+  }
+}
+
+@media screen and (max-width:1019px){
+  
+  #main-container{
+    display:flex;
+    
+  }
+  
+  .sunshine-nickname img{
+    width:26rem;
+    height: 26rem;
+
+    position: absolute;
+
+    margin-top:-12.5rem;
+    margin-left:-29px;
+  } 
+
+  .sunshine-nickname .nickname{
+    
+    width:220px;
+    height:140px;
+
+    position: absolute;
+
+    margin-top:-50px;
+    margin-left:75px;
+
+
+  }
+
+  .sunshine-nickname{
+    width: 35vw;
+    
+    position: absolute;
+
+    margin-left:35rem;
+  }
+
+
+  .sunshine-nickname .nickname p{
+    padding-left:8px;
+    font-size:16px;
+  }
+
+  .sunshine-nickname .nickname input{
+    
+    width:200px;
+    height: 25px;
+   
+  }
+  
+  .sunshine-nickname .login-btn{
+    
+    width:71px;
+    height: 67px;
+
+    position: absolute;
+
+    margin-top:6.4rem;
+    margin-left:155px;
+  }
+  
+}
+
+@media screen and (max-width:950px){
+  
+
+  #main-container{
+    height: 140vh;
+    
+    align-items: center;
+  }
+
+  .sunshine-nickname{
+
+    position: relative;
+  
+    margin-left:-80px;
+  }  
+    
+  .h1-container{
+    margin-top: -190px;
+  }
+
+  .p-container{
+    margin-top: -150px;
+    margin-left:10px
+  }
+  
+}
+
+@media screen and (max-width:540px){
+  .sunshine-nickname{
+    margin-left: -180px;
+  }
+
+  .h1-container{
+    font-size:30px;
+    width: 20rem;
+
+    margin-left:10px;
+  }
+}
+
+@media screen and (max-width:447px){
+  .sunshine-nickname{
+    width:13rem;
+  }
+
+  .sunshine-nickname img{
+    margin-left:-23px;
+  }
+
+  .sunshine-nickname .nickname{
+    margin-left:87px;
+  }
+
+  .sunshine-nickname .login-btn{
+    margin-left:158px;
+  }
+}
+
+@media screen and (max-width:385px){
+
+  #main-container{
+    height: 100vh;
+
+    padding-top:50px;
+  }
+
+  .sunshine-nickname img{
+    width:20rem;
+    height: 20rem;
+
+    margin-left:25px;
+  }
+
+  .sunshine-nickname .nickname{
+    width:180px;
+    height:120px;
+
+    margin-top: -92px;
+    margin-left: 105px;
+    
+
+  }
+
+  .sunshine-nickname .login-btn{
+    margin-top: 40px;
+    margin-left:155px;
+  }
+
+  .h1-container{
+    font-size:22px;
+
+    width:17rem;
+  }
+
+  .p-container{
+    font-size:18px;
+
+    
+
+    height: 140px;
+    width: 240px;
+  }
+
+  .sunshine-nickname .nickname input{
+    width:160px;
+    height: 25px;
+  }
+
+  .sunshine-nickname .nickname p{
+    font-size:14px;
+  }
+
+}
+
+@media screen and (max-height: 570px){
+
+  #main-container{
+    padding-top:80px;
+  }
+
+  .p-container{
+    margin-top:-100px;
+    margin-bottom:10px;
+  }
+
+  .sunshine-nickname img{
+    width: 17rem;
+    height: 17rem;
+
+    margin-top:-150px;
+    margin-left:50px;
+  }
+
+  .sunshine-nickname .nickname{
+    width:160px;
+    height:90px;
+
+    margin-top:-55px;
+    margin-left:114px;
+    
+  }
+
+  .sunshine-nickname .login-btn{
+    width:60px;
+    height: 60px;
+
+    font-size:10px;
+
+    margin-top:50px;
+    margin-left:162px;
+  }
+
+  .sunshine-nickname .nickname input{
+    width: 144px;
+    height: 20px;
+  }
+
+  .sunshine-nickname .nickname p{
+    font-size: 13px;
+
+  }
+}
