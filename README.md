@@ -15,6 +15,13 @@
 <ul>
   <li>HTML5</li>
   <li>CSS3</li>
-  <li>Javascript</li>
+  <li>Typescript</li>
   <li>ReactJS</li>
+</ul>
+
+<h2>Outros componentes utilizados que fazem com que o projeto funcione</h2>
+<ul>
+  <li>Axios</li>
+  <li>React Icons</li>
+  <li>React Router Dom</li>
 </ul>
