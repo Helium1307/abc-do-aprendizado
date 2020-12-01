@@ -46,17 +46,23 @@ function Alphabet(){
 
 
     api.get(`people/?search=${search}`)
-    .then((response) => {
+    .then((response) => { 
       let filtragem = response.data.results.filter((value:any)=>{
         
         return value.name.toLowerCase() !== search.toLowerCase();
       });
 
-      setSuggestion([filtragem.map((names:any)=>{
-        return ` , ${names.name}`;
-      })])
+      if(search === ""){
+        setSuggestion('');
+      }else{
+        setSuggestion([filtragem.map((names:any)=>{
+          let result = `${names.name}, `
+          return result
+        })])
+      }
 
-      setSuggestion(suggestion.replace(/,/,""))
+
+            
 
 
     })
@@ -65,6 +71,7 @@ function Alphabet(){
    });
 
   },[rightLetter])
+
 
   return(
     <body>
